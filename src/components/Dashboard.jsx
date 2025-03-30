@@ -6,6 +6,8 @@ import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { GiCheckedShield } from "react-icons/gi";
 import Navbar from './Navbar';
+import CardBalanceChart from './chart';
+import BankAccountsDisplay from './chart';
 
 function Dashboard() {
   const [collapsed1, setCollapsed1] = useState(true)
@@ -55,7 +57,43 @@ function Dashboard() {
     lastUsed: "2 days ago at Restaurant"
   };
 
-  
+  const cards=[
+    {
+      type: "Visa",
+      balance: 1254.37,
+      expiryDate: "09/28",
+      gradient: darkMode ? "from-orange-600 to-red-600" : "from-orange-400 to-orange-600",
+      lastUsed: "Yesterday at Starbucks"
+    },
+    {
+      type: "Mastercard",
+      balance: 842.75,
+      expiryDate: "11/26",
+      gradient: darkMode ? "from-orange-500 to-red-500" : "from-orange-500 to-red-500",
+      lastUsed: "Today at Grocery Store"
+    },
+    {
+      type: "Amex",
+      balance: 601.00,
+      expiryDate: "04/27",
+      gradient: darkMode ? "from-orange-500 to-amber-600" : "from-yellow-500 to-orange-500",
+      lastUsed: "3 days ago at Amazon"
+    },
+    {
+      type: "RuPay",
+      balance: 30000.75,
+      expiryDate: "11/28",
+      gradient: darkMode ? "from-orange-600 to-red-700" : "from-orange-400 to-red-500",
+      lastUsed: "Last week at Gas Station"
+    },
+    {
+      type: "UnionPay",
+      balance: 70562.50,
+      expiryDate: "07/25",
+      gradient: darkMode ? "from-amber-500 to-orange-600" : "from-yellow-400 to-orange-500",
+      lastUsed: "2 days ago at Restaurant"
+    }
+  ]
   const totalBalance = card1.balance + card2.balance + card3.balance + card4.balance + card5.balance;
   
   
@@ -128,8 +166,6 @@ function Dashboard() {
                       <p className="text-xs sm:text-sm">{card1.expiryDate}</p>
                     </div>
                   </div>
-                  
-                  
                   <div
                     className={`bg-gradient-to-r ${card2.gradient} w-56 sm:w-64 h-36 sm:h-40 rounded-xl shadow-lg p-4 cursor-pointer transition-transform duration-120 hover:scale-105 hover:z-10 -ml-12 sm:-ml-16 md:-ml-20`}
                     onClick={() => setSelectedCardIndex(1)}
@@ -201,13 +237,12 @@ function Dashboard() {
               <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-800 to-transparent pointer-events-none"></div>
             </div>
           </div>
-
+          <BankAccountsDisplay />
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 space-y-4">
               <h2 className={`text-lg md:text-xl font-bold mb-4 ${darkMode ? 'text-orange-400' : 'text-orange-500'}`}>
                 Spending Categories
               </h2>
-              
               
               <div className={`${darkMode ? 'bg-gray-700 border-gray-700' : 'bg-gray-50 border-gray-100'} border rounded-lg shadow p-4 mb-4 transition-colors duration-200`}>
                 <div className="flex justify-between items-center cursor-pointer" onClick={() => setCollapsed2(!collapsed2)}>
