@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
-import Payment from './components/payment';
+import Payment from './components/Payment';
 import Navbar from './components/Navbar';
 import SignIn from './components/SignIn';
 import Login from './components/Login';
